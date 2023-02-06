@@ -38,7 +38,7 @@ app.get("/api/:date", (req, res) => {
   }
 
   return res.json({
-    unix: Math.floor(date.getTime()),
+    unix: Math.floor(date.getTime()) * 1000,
     utc: date.toUTCString(),
   });
 });
