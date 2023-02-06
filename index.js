@@ -26,7 +26,16 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/:date", (req, res) => {
-  const date = new Date(req.params.date);
+  let date;
+  if (!isNaN(req.params.date)) {
+    date = new Date(parseInt(req.params.date));
+  } else {
+    date = new Date(req.params.date);
+  }
+
+  if (date.toString() === "Invalid Date") {
+    return res.json({ error: "Invalid Date" });
+  }
 
   return res.json({
     unix: Math.floor(date.getTime()), 
