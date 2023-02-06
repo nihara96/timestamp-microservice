@@ -10,7 +10,7 @@ var app = express();
 var cors = require("cors");
 app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
 
-require("dotenv").config();
+require('dotenv').config(); 
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static("public"));
@@ -38,18 +38,19 @@ app.get("/api/:date", (req, res) => {
   }
 
   return res.json({
-    unix: Math.floor(date.getTime()) * 1000,
-    utc: date.toUTCString(),
+    unix: Math.floor(date.getTime()), 
+    utc: date.toUTCString(), 
   });
 });
 
-app.get("/api/", (req, res) => {
-  let date = new Date();
+app.get('/api/',(req,res)=>{
+  let date = new Date(); 
   return res.json({
-    unix: Math.floor(date.getTime()),
-    utc: date.toUTCString(),
+    unix: Math.floor(date.getTime()), 
+    utc: date.toUTCString(), 
   });
-});
+
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
